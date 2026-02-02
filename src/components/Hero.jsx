@@ -1,66 +1,64 @@
 import { motion } from 'framer-motion';
-import { profile } from '../data';
-import { ArrowDown } from 'lucide-react';
 import SpeedBackground from './SpeedBackground';
+import { Download, Mail, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import NeonCore from './NeonCore';
 
 const Hero = () => {
   return (
-    <div className="hero-section">
+    <section className="hero-section">
       <SpeedBackground />
-      <div className="container hero-container" style={{ position: 'relative', zIndex: 10 }}>
+      
+      <div className="hero-content">
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
+          className="hero-text"
+          initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="hero-content"
+          transition={{ duration: 1 }}
         >
-          <div className="subtitle text-neon">
-            /// {profile.title}
+          <div className="status-badge">
+            <span className="pulsing-dot"></span>
+            AVAILABLE FOR HIRE
           </div>
           
           <h1 className="hero-title">
-            <span className="block">VANSH</span>
-            <span className="block outline text-transparent">SHARMA</span>
+            VANSH <span className="neon-text">SHARMA</span>
           </h1>
-
-          <p className="hero-description">
-            {profile.subtitle}
+          
+          <p className="hero-subtitle">
+            Full Stack Developer & <br/>
+            High Performance Designer
           </p>
 
           <div className="hero-actions">
-            <a href="#projects" className="btn">
-              EXPLORE WORK
+            <a href="#projects" className="btn btn-primary">
+              VIEW PROJECTS <ChevronRight size={20} />
             </a>
-            <a href={profile.socials.github} target="_blank" rel="noreferrer" className="btn btn-outline">
-              GITHUB
+            <a href="/resume.pdf" download className="btn btn-outline">
+              DOWNLOAD RESUME <Download size={20} />
             </a>
           </div>
         </motion.div>
 
         <motion.div 
           className="hero-image-container"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
-          {/* USER: Replace this image with your own photo at src/assets/profile.png */}
-          {/* For best results: Use a PNG with a transparent background (cutout) */}
-          <img src="/profile_new.jpg" alt="Vansh Sharma" className="hero-image" onError={(e) => {
-            e.target.onerror = null; 
-            e.target.src = "https://placehold.co/600x800/121212/D1F238?text=YOUR+PHOTO";
-          }}/>
-          <div className="hero-glow"></div>
+           {/* 3D Neon Core */}
+           <div style={{ width: '100%', height: '500px', cursor: 'grab', position: 'relative' }}>
+               <NeonCore />
+               <div className="scan-line"></div>
+               <div className="corner-brackets"></div>
+           </div>
+           
+           <div className="telemetry-tag" style={{ position: 'absolute', bottom: '-20px', right: '0', zIndex: 10 }}>
+               POWER UNIT v2.0
+           </div>
         </motion.div>
       </div>
-      
-      <motion.div 
-        className="scroll-indicator"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-      >
-        <ArrowDown color="var(--neon)" />
-      </motion.div>
-    </div>
+    </section>
   );
 };
 
