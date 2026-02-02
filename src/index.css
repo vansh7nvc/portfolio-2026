@@ -880,6 +880,89 @@ a {
   pointer-events: none;
 }
 
+/* Driver Card (Hero Profile) */
+.driver-card {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.card-glass-frame {
+  position: relative;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+}
+
+.card-glass-frame:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 30px rgba(209, 242, 56, 0.2);
+}
+
+.profile-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+}
+
+.card-glass-frame:hover .profile-img {
+  filter: grayscale(0%);
+}
+
+.card-interface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-stat {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.card-stat.top-left { top: 0; left: 0; }
+.card-stat.top-right { top: 0; right: 0; text-align: right; }
+.card-stat.bottom-left { bottom: 0; left: 0; }
+.card-stat.bottom-right { bottom: 0; right: 0; }
+
+.card-stat .label {
+  font-size: 10px;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+.card-stat .value {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--neon);
+  font-family: var(--font-display);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  background: var(--neon);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon);
+  animation: pulse 2s infinite;
+}
+
+
 .tech-car {
   position: absolute;
   bottom: 40%;

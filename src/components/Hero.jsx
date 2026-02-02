@@ -5,6 +5,8 @@ import { useState } from 'react';
 import NeonCore from './NeonCore';
 
 const Hero = () => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <section className="hero-section">
       <SpeedBackground />
@@ -46,15 +48,44 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-           {/* 3D Neon Core */}
-           <div style={{ width: '100%', height: '500px', cursor: 'grab', position: 'relative' }}>
-               <NeonCore />
-               <div className="scan-line"></div>
-               <div className="corner-brackets"></div>
-           </div>
-           
-           <div className="telemetry-tag" style={{ position: 'absolute', bottom: '-20px', right: '0', zIndex: 10 }}>
-               POWER UNIT v2.0
+           {/* Premium Driver Card Design */}
+           <div className="driver-card">
+              <div className="card-glass-frame">
+                {!imgError ? (
+                  <img 
+                    src="/profile_new.jpg" 
+                    alt="Vansh Sharma" 
+                    className="profile-img"
+                    onError={() => setImgError(true)}
+                  />
+                ) : (
+                    <div className="profile-placeholder">
+                      <span>VS</span>
+                    </div>
+                )}
+                
+                {/* Overlay Interface */}
+                <div className="card-interface">
+                   <div className="card-stat top-left">
+                     <span className="label">ROLE</span>
+                     <span className="value">DEV</span>
+                   </div>
+                   <div className="card-stat top-right">
+                     <span className="label">TEAM</span>
+                     <span className="value">LN4</span>
+                   </div>
+                   <div className="card-stat bottom-left">
+                     <span className="label">LOC</span>
+                     <span className="value">IND</span>
+                   </div>
+                   <div className="card-stat bottom-right">
+                     <div className="status-indicator online"></div>
+                   </div>
+                </div>
+
+                <div className="scan-line"></div>
+                <div className="corner-brackets"></div>
+              </div>
            </div>
         </motion.div>
       </div>
